@@ -206,6 +206,26 @@ func (s Spider) ScanAsUser(contextid string, userid string, url string, maxchild
 	return s.c.Request("spider/action/scanAsUser/", m)
 }
 
+func (s Spider) ScanAjax(url string, inscope string, contextname string, subtreeonly string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"url":         url,
+		"inScope":     inscope,
+		"contextName": contextname,
+		"subtreeOnly": subtreeonly,
+	}
+	return s.c.Request("ajaxSpider/action/scan/", m)
+}
+
+func (s Spider) ScanAjaxAsUser(contextname string, userid string, url string, subtreeonly string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+		"userId":      userid,
+		"url":         url,
+		"subtreeOnly": subtreeonly,
+	}
+	return s.c.Request("ajaxSpider/action/scanAsUser/", m)
+}
+
 func (s Spider) Pause(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
