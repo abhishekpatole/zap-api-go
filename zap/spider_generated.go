@@ -34,11 +34,24 @@ func (s Spider) Status(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/view/status/", m)
 }
 
+func (s Spider) AjaxScanStatus() (map[string]interface{}, error) {
+
+	return s.c.Request("ajaxSpider/view/status/", nil)
+}
+
 func (s Spider) Results(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
 	}
 	return s.c.Request("spider/view/results/", m)
+}
+
+func (s Spider) AjaxScanResults(start string, count string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"start": start,
+		"count": count,
+	}
+	return s.c.Request("ajaxSpider/view/results/", m)
 }
 
 func (s Spider) FullResults(scanid string) (map[string]interface{}, error) {
