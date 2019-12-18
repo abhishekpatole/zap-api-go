@@ -229,10 +229,10 @@ func (s Spider) ScanAjax(url string, inscope string, contextname string, subtree
 	return s.c.Request("ajaxSpider/action/scan/", m)
 }
 
-func (s Spider) ScanAjaxAsUser(contextname string, userid string, url string, subtreeonly string) (map[string]interface{}, error) {
+func (s Spider) ScanAjaxAsUser(contextname string, username string, url string, subtreeonly string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextName": contextname,
-		"userId":      userid,
+		"userName":    username,
 		"url":         url,
 		"subtreeOnly": subtreeonly,
 	}
